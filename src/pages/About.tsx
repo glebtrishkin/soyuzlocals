@@ -1,32 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import InteractiveHero from '../components/InteractiveHero';
 
 function About() {
   return (
-    <div className="pt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold mb-8">О нас</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <p className="text-lg text-gray-600 mb-6">
-              СОЮЗ - это современный бренд одежды, созданный в Калининграде. Мы создаем уникальные предметы гардероба, которые сочетают в себе комфорт, стиль и качество.
-            </p>
-            <p className="text-lg text-gray-600 mb-6">
-              Наша миссия - создавать одежду, которая станет неотъемлемой частью вашего гардероба, сохраняя при этом доступные цены и высокое качество.
-            </p>
-            <p className="text-lg text-gray-600">
-              Мы гордимся тем, что все наши изделия производятся в России с использованием современных технологий и материалов высочайшего качества.
-            </p>
-          </div>
-          <div className="relative aspect-[4/3]">
+    <>
+      {/* Hero-блок: как на главной */}
+      <InteractiveHero imageSrc="/ASSETS/DSC09470.jpg" />
+
+      {/* Контент */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+        {/* О нас */}
+        <section className="flex flex-col items-center text-center">
+          {/* Логотип */}
+          <img
+            src="/ASSETS/1.png"
+            alt="Союз логотип"
+            className="w-48 h-auto mb-8"
+          />
+          {/* Текст под логотипом */}
+          <p className="text-lg text-gray-700 mb-4">
+            FROM LOCALS WITH LOVE
+          </p>
+          <p className="text-lg text-gray-700">
+            {/* Дополнительный текст сюда */}
+          </p>
+        </section>
+
+        {/* Кнопка «Магазин» */}
+        <div className="flex justify-center mt-12 px-4 pb-16">
+          <Link
+            to="/shop"
+            className="tech-button relative inline-flex items-center justify-center px-8 py-4 uppercase font-medium relative overflow-hidden transition-all duration-700 border border-black"
+          >
+            <span className="text-fade relative z-10 w-full text-center tracking-widest">
+              Магазин
+            </span>
             <img
-              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200"
-              alt="О нас"
-              className="w-full h-full object-cover rounded-lg"
+              src="/ASSETS/союз лого пнг.png"
+              alt="Союз лого"
+              className="logo-reveal w-full h-full object-contain p-2"
             />
-          </div>
+          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

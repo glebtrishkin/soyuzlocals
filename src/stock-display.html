@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Display</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .stock-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+        }
+        .in-stock {
+            color: green;
+        }
+        .out-of-stock {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Status</h1>
+    
+    <div class="stock-item">
+        <h2>T-Shirt "Дактиль"</h2>
+        <p id="stock-display-tshirt-2-M">Загрузка...</p>
+    </div>
+
+    <div class="stock-item">
+        <h2>Pants</h2>
+        <p id="stock-display-pants-1-L">Загрузка...</p>
+    </div>
+
+    <div class="stock-item">
+        <h2>Hoodie</h2>
+        <p id="stock-display-hoodie-1-M">Загрузка...</p>
+    </div>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseUrl = 'https://uwpqzymtbaxdtfchhlfm.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3cHF6eW10YmF4ZHRmY2hobGZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA5MTA4MDgsImV4cCI6MjA1NjQ4NjgwOH0.PhUm5eS1rs6Ddh4_5mtJ0jYV6u5_HUGh9EV_n5KHr_0';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Function to check stock
+        async function checkStock(productCode, size) {
+            try {
+                const { data, error } = await supabase
+                    .from('inventory')
+                    .select('stock')
+                    .eq('code', productCode)
+                    .eq('size', size)
+                    .maybeSingle();
+
+                if (error) throw error;
+
+                const stock = data?.stock || 0;
+                return {
+                    inStock: stock > 0,
+                    quantity: stock
+                };
+            } catch (error) {
+                console.error('Error checking stock:', error);
+                return { inStock: false, quantity: 0 };
+            }
+        }
+
+        // Function to update display
+        async function updateStockDisplay(productCode, size, elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            try {
+                const { inStock, quantity } = await checkStock(productCode, size);
+                element.textContent = inStock 
+                    ? `В наличии: ${quantity} шт.`
+                    : 'Нет в наличии';
+                element.className = inStock ? 'in-stock' : 'out-of-stock';
+            } catch (error) {
+                element.textContent = 'Ошибка загрузки';
+                element.className = 'error';
+            }
+        }
+
+        // Update all stock displays
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStockDisplay('tshirt-2', 'M', 'stock-display-tshirt-2-M');
+            updateStockDisplay('pants-1', 'L', 'stock-display-pants-1-L');
+            updateStockDisplay('hoodie-1', 'M', 'stock-display-hoodie-1-M');
+        });
+    </script>
+</body>
+</html>

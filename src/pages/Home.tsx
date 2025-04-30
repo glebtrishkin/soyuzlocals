@@ -41,7 +41,7 @@ function Home() {
   return (
     <>
       {/* Interactive Hero Section with depth effect */}
-      <InteractiveHero imageSrc="/ASSETS/hero.jpg">
+      <InteractiveHero imageSrc="/ASSETS/items/hero.jpg">
         <div className="w-full h-16 md:h-24">
           <Logo />
         </div>
@@ -79,7 +79,7 @@ function Home() {
               Все товары
             </span>
             <img 
-              src="/ASSETS/союз лого пнг.png" 
+              src="/ASSETS/items/союз лого пнг.png" 
               alt="Союз лого" 
               className="logo-reveal w-full h-full object-contain p-2"
             />

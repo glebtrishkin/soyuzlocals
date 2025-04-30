@@ -78,7 +78,7 @@ function Shop({ initialCategory = null }: ShopProps) {
   return (
     <>
       {/* Interactive Hero Section with depth effect */}
-      <InteractiveHero imageSrc="/ASSETS/IMG_1745[1].jpg" />
+      <InteractiveHero imageSrc="/ASSETS/items/IMG_1745[1].jpg" />
 
       {/* Category Navigation */}
       <div className="w-full border-b border-gray-200">

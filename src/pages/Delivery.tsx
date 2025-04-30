@@ -6,7 +6,7 @@ function Delivery() {
   return (
     <>
       {/* Hero-блок одинаковый с главной */}
-      <InteractiveHero imageSrc="public/ASSETS/items/skeletBACK.jpg" />
+      <InteractiveHero imageSrc="public/ASSETS/items/DSC01161-Улучшено-Ум. шума.jpg" />
 
       {/* Контент */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
@@ -18,7 +18,6 @@ function Delivery() {
             </h1>
             <ul className="space-y-6 text-gray-700 text-lg">
               <li className="flex items-start">
-                <span className="mr-4 text-2xl">🚚</span>
                 <div>
                   <p className="font-medium text-black">
                     Курьер по Калининграду
@@ -27,14 +26,12 @@ function Delivery() {
                 </div>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-2xl">📦</span>
                 <div>
                   <p className="font-medium text-black">Почта России</p>
                   <p>От 300 ₽, 3–7 дней</p>
                 </div>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-2xl">🏬</span>
                 <div>
                   <p className="font-medium text-black">Самовывоз</p>
                   <p>Ленинский проспект, 18к1</p>
@@ -66,7 +63,6 @@ function Delivery() {
             </h2>
             <ul className="space-y-6 text-gray-700 text-lg">
               <li className="flex items-start">
-                <span className="mr-4 text-2xl">💳</span>
                 <div>
                   <p className="font-medium text-black">Банковские карты</p>
                   <p>МИР, Visa, Mastercard</p>
@@ -80,7 +76,6 @@ function Delivery() {
                 </div>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-2xl">💵</span>
                 <div>
                   <p className="font-medium text-black">
                     Наличные при получении

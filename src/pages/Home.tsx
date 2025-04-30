@@ -41,7 +41,7 @@ function Home() {
   return (
     <>
       {/* Interactive Hero Section with depth effect */}
-      <InteractiveHero imageSrc="/ASSETS/hero.jpg.jpg">
+      <InteractiveHero imageSrc="/ASSETS/hero.jpg">
         <div className="w-full h-16 md:h-24">
           <Logo />
         </div>

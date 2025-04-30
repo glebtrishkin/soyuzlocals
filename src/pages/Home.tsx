@@ -10,7 +10,7 @@ function Home() {
   const mainProducts = [
     productsData['pants-1'],
     productsData['longsleeve-spring'],
-    productsData['hoodie-1']
+    productsData['tshirt-skulls']
   ].filter(Boolean); // Filter out any undefined products
 
   const [inventory, setInventory] = useState<Record<string, InventoryItem[]>>({});

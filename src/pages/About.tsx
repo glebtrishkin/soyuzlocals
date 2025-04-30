@@ -14,7 +14,7 @@ function About() {
         <section className="flex flex-col items-center text-center">
           {/* Логотип */}
           <img
-            src="/ASSETS/1.png"
+            src="/ASSETS/items/1.png"
             alt="Союз логотип"
             className="w-48 h-auto mb-8"
           />

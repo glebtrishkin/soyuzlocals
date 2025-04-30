@@ -6,7 +6,7 @@ export const productsData: Record<string, Product> = {
     id: 'pants-1',
     name: 'Брюки Союз 2.0',
     price: '5000 ₽',
-    image: '/ASSETS/items/DSC09255.jpg',
+    image: '/ASSETS/items/DSC09225.jpg',
     images: [
       '/ASSETS/items/17.jpg',
       '/ASSETS/items/18.jpg',
@@ -67,7 +67,7 @@ export const productsData: Record<string, Product> = {
     id: 'tshirt-skulls',
     name: 'Футболка Черепа',
     price: '2500 ₽',
-    image: '/ASSETS/items/DSC042288.jpg',
+    image: '/ASSETS/items/DSC04288.jpg',
     images: [
       '/ASSETS/items/13.jpg',
       '/ASSETS/items/14.jpg',

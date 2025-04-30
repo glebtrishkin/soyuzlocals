@@ -6,7 +6,7 @@ function About() {
   return (
     <>
       {/* Hero-блок: как на главной */}
-      <InteractiveHero imageSrc="/ASSETS/DSC09470.jpg" />
+      <InteractiveHero imageSrc="/ASSETS/items/DSC09470.jpg" />
 
       {/* Контент */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
@@ -37,7 +37,7 @@ function About() {
               Магазин
             </span>
             <img
-              src="/ASSETS/союз лого пнг.png"
+              src="/ASSETS/items/союз лого пнг.png"
               alt="Союз лого"
               className="logo-reveal w-full h-full object-contain p-2"
             />

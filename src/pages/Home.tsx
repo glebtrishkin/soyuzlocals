@@ -9,8 +9,8 @@ function Home() {
   // Get specific products we want to display
   const mainProducts = [
     productsData['pants-1'],
-    productsData['hoodie-1'],
-    productsData['case']
+    productsData['longsleeve-spring'],
+    productsData['hoodie-1']
   ].filter(Boolean); // Filter out any undefined products
 
   const [inventory, setInventory] = useState<Record<string, InventoryItem[]>>({});

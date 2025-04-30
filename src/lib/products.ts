@@ -66,7 +66,7 @@ export const productsData: Record<string, Product> = {
     id: 'tshirt-skulls',
     name: 'Футболка Черепа',
     price: '2500 ₽',
-    image: '/ASSETS/items/SKEKETDUO.jpg',
+    image: '/ASSETS/items/DSC04223.jpg',
     images: [
       '/ASSETS/items/13.jpg',
       '/ASSETS/items/14.jpg',
@@ -74,7 +74,7 @@ export const productsData: Record<string, Product> = {
       '/ASSETS/items/DSC00696.jpg',
       '/ASSETS/items/DSC00698.jpg',
       '/ASSETS/items/DSC00701.jpg',
-      '/ASSETS/items/SKEKETDUO.jpg',
+      '/ASSETS/items/DSC04223.jpg',
       '/ASSETS/items/DSC04288.jpg',
     ],
     category: 'clothing',

@@ -18,7 +18,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex justify-center py-3 border-b border-gray-200">
           <Link to="/" className="h-8">
             <img 
-              src="/ASSETS/союз лого пнг.png" 
+              src="/ASSETS/items/союз лого пнг.png" 
               alt="СОЮЗ" 
               className="h-full object-contain"
             />

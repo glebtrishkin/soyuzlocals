@@ -67,7 +67,6 @@ export const productsData: Record<string, Product> = {
     id: 'longsleeve-spring',
     name: 'Лонгсливы весенние',
     price: '3999 ₽',
-    price: 'Цена по запросу',
     image: '/ASSETS/items/DSC00997-Улучшено-Ум. шума.jpg',
     images: [
       '/ASSETS/items/DSC00997-Улучшено-Ум. шума.jpg',

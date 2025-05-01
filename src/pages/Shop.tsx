@@ -134,7 +134,7 @@ function Shop({ initialCategory = null }: ShopProps) {
                   key={product.id} 
                   className="group cursor-pointer"
                 >
-                  <div className="relative w-[800px] h-full overflow-hidden product-card">
+                  <div className="relative w-[700px] h-full overflow-hidden product-card">
                     <img
                       src={product.image}
                       alt={product.name}

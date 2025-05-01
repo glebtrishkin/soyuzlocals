@@ -66,6 +66,7 @@ export const productsData: Record<string, Product> = {
   'longsleeve-spring': {
     id: 'longsleeve-spring',
     name: 'Лонгсливы весенние',
+    price: '3999 ₽',
     price: 'Цена по запросу',
     image: '/ASSETS/items/DSC00997-Улучшено-Ум. шума.jpg',
     images: [
@@ -206,7 +207,7 @@ export const productsData: Record<string, Product> = {
 'bag-cow': {
     id: 'bag-cow',
     name: 'Сумка-коровка',
-    price: 'Цена по запросу',
+    price: '2500 ₽',
     image: '/ASSETS/items/DSC00600.jpg',
     images: [
       '/ASSETS/items/DSC00600.jpg',
@@ -245,7 +246,7 @@ export const productsData: Record<string, Product> = {
   socks: {
     id: 'socks',
     name: 'Носки',
-    price: 'Цена по запросу',
+    price: '500 ₽',
     image: '/ASSETS/items/DSC00591.jpg',
     images: [
       '/ASSETS/items/DSC00591.jpg',

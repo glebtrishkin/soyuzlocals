@@ -127,7 +127,7 @@ function Shop({ initialCategory = null }: ShopProps) {
               <p className="text-black">Нет товаров в данной категории</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
               {displayedProducts.map((product) => (
                 <Link 
                   to={`/product/${product.id}`}
@@ -139,32 +139,7 @@ function Shop({ initialCategory = null }: ShopProps) {
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover product-card-image"
-                    />
-                    
-                    {/* Image count indicator */}
-                    {product.images && product.images.length > 0 && (
-                      <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full flex items-center text-xs">
-                        <ImageIcon size={14} className="mr-1" />
-                        <span>{product.images.length}</span>
-                      </div>
-                    )}
-                    
-                    {/* Brand badge for "friends" category */}
-                    {product.category === 'friends' && product.brand && (
-                      <div className="absolute top-0 right-0 bg-black text-white px-2 py-1 text-xs">
-                        {product.brand}
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4 product-card-info">
-                    <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
-                    <p className="text-xs text-black mt-1">{product.price}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+                    /
 
         {/* Dom Sovets Banner - Only shown for 'all' and 'accessories' categories */}
         {shouldShowDomSovetov && (

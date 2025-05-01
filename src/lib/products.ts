@@ -85,37 +85,6 @@ export const productsData: Record<string, Product> = {
     },
     sizes: ['L', 'XL', 'XXL'],
   },
-  'tshirt-tennis': {
-    id: 'tshirt-tennis',
-    name: 'Футболка Теннис',
-    price: '2500 ₽',
-    image: '/ASSETS/items/ponger.jpg',
-    images: [
-      '/ASSETS/items/15.jpg',
-      '/ASSETS/items/16.jpg',
-      '/ASSETS/items/ponger.jpg',
-    ],
-    category: 'clothing',
-    description: {
-      rus: 'Футболка из 100% хлопка с авторским принтом.',
-      eng: '100% cotton t-shirt with original print.',
-    },
-    sizes: ['M', 'XL'],
-  },
-  'tshirt-okrug': {
-    id: 'tshirt-okrug',
-    name: 'Футболка Округ',
-    price: '3000 ₽',
-    image: '/ASSETS/items/Okrug.jpg',
-    images: ['/ASSETS/items/Okrug.jpg'],
-    category: 'friends',
-    brand: 'Округ',
-    description: {
-      rus: 'Коллаборация с брендом Округ. Лимитированная серия.',
-      eng: 'Collaboration with Округ brand. Limited edition.',
-    },
-    sizes: ['XXL'],
-  },
   'long-pink': {
     id: 'long-pink',
     name: 'Лонгслив Огонь розовый',

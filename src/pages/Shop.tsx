@@ -127,7 +127,7 @@ function Shop({ initialCategory = null }: ShopProps) {
               <p className="text-black">Нет товаров в данной категории</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
               {displayedProducts.map((product) => (
                 <Link 
                   to={`/product/${product.id}`}
@@ -139,7 +139,16 @@ function Shop({ initialCategory = null }: ShopProps) {
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover product-card-image"
-                    /
+                    />
+                    
+                    {/* Image count indicator */}
+                    {product.images && product.images.length > 0 && (
+                      <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full flex items-center text-xs">
+                        <ImageIcon size={14} className="mr-1" />
+                        <span>{product.images.length}</span>
+                      </div>
+                    )}
+                    
                     {/* Brand badge for "friends" category */}
                     {product.category === 'friends' && product.brand && (
                       <div className="absolute top-0 right-0 bg-black text-white px-2 py-1 text-xs">
@@ -209,3 +218,4 @@ function Shop({ initialCategory = null }: ShopProps) {
 }
 
 export default Shop;
+sb1-durut5j6/src/pages/Shop.tsx at 7f558860af4d2b9645d2e89bd7071f9994c71f4b · JamieChong12/sb1-durut5j6

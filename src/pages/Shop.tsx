@@ -218,4 +218,3 @@ function Shop({ initialCategory = null }: ShopProps) {
 }
 
 export default Shop;
-sb1-durut5j6/src/pages/Shop.tsx at 7f558860af4d2b9645d2e89bd7071f9994c71f4b · JamieChong12/sb1-durut5j6

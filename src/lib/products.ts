@@ -90,7 +90,7 @@ export const productsData: Record<string, Product> = {
     price: '2500 ₽',
     image: '/ASSETS/items/DSC04288.jpg',
     images: [
-      '/ASSETS/items/13.jpg',
+      '/ASSETS/13.jpg',
       '/ASSETS/items/14.jpg',
       '/ASSETS/items/DSC00694.jpg',
       '/ASSETS/items/DSC00696.jpg',

@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Hexagon } from 'lucide-react';
 
-const Logo = () => {
+function Logo() {
   return (
-    <Link to="/" className="flex items-center justify-center h-full">
-      <div className="flex items-center space-x-2">
-        <Hexagon className="w-8 h-8" />
-        <span className="text-2xl font-bold tracking-wider uppercase">Союз</span>
-      </div>
-    </Link>
+    <div className="w-full h-full flex items-center justify-center">
+      <img 
+        src="/ASSETS/items/1.png" 
+        alt="СОЮЗ" 
+        className="max-h-full max-w-full md:max-w-[80%] lg:max-w-full object-contain filter brightness-0 invert"
+      />
+    </div>
   );
-};
+}
 
 export default Logo;

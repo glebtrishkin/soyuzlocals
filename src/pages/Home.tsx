@@ -1,63 +1,89 @@
-import React from 'react';
-import { ShoppingBag } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../components/Logo';
+import InteractiveHero from '../components/InteractiveHero';
+import { getAllInventory, groupInventoryByProduct, type InventoryItem } from '../lib/supabase';
+import { productsData } from '../lib/products';
 
 function Home() {
-  const products = [
-    {
-      name: 'Куртка СОЮЗ',
-      price: '24900 ₽',
-      image: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&q=80&w=800'
-    },
-    {
-      name: 'Футболка СОЮЗ',
-      price: '12900 ₽',
-      image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=800'
-    },
-    {
-      name: 'Сумка СОЮЗ',
-      price: '15900 ₽',
-      image: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?auto=format&fit=crop&q=80&w=800'
+  // Get specific products we want to display
+  const mainProducts = [
+    productsData['pants-1'],
+    productsData['longsleeve-spring'],
+    productsData['tshirt-skulls']
+  ].filter(Boolean); // Filter out any undefined products
+
+  const [inventory, setInventory] = useState<Record<string, InventoryItem[]>>({});
+  const [loading, setLoading] = useState(true);
+
+  // Fetch inventory data from Supabase
+  useEffect(() => {
+    async function fetchInventory() {
+      try {
+        setLoading(true);
+        
+        // Get all inventory items
+        const allItems = await getAllInventory();
+        
+        // Group them by product ID
+        const groupedInventory = groupInventoryByProduct(allItems);
+        setInventory(groupedInventory);
+      } catch (error) {
+        console.error('Error fetching inventory:', error);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+    
+    fetchInventory();
+  }, []);
 
   return (
     <>
-      {/* Hero Section */}
-      <div className="pt-16">
-        <div className="relative h-screen">
-          <img
-            src="/ASSETS/hero.jpg.jpg"
-            alt="Hero"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-            <div className="text-center text-white w-full max-w-[500px] px-4">
-              <img
-                src="/ASSETS/союз-пдф.svg"
-                alt="СОЮЗ"
-                className="w-full h-auto filter brightness-0 invert"
-              />
-            </div>
+      {/* Interactive Hero Section with depth effect */}
+      <InteractiveHero imageSrc="/ASSETS/items/hero.jpg">
+        <div className="w-full h-16 md:h-24">
+          <Logo />
+        </div>
+      </InteractiveHero>
+
+      {/* Main Products Grid - No heading, no spacing, full width */}
+      <div className="w-full">
+        <div className="w-full p-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+            {mainProducts.map((product) => (
+              <Link to={`/product/${product.id}`} key={product.id} className="group cursor-pointer">
+                <div className="relative w-full overflow-hidden product-card">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-auto object-contain product-card-image"
+                  />
+                </div>
+                <div className="p-4 product-card-info">
+                  <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
+                  <p className="text-xs text-black mt-1">{product.price}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
-      </div>
-
-      {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="relative aspect-[3/4] mb-4 overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <h3 className="text-lg font-medium">{product.name}</h3>
-              <p className="text-gray-600">{product.price}</p>
-            </div>
-          ))}
+        
+        {/* Enhanced tech-inspired button with sophisticated animation */}
+        <div className="flex justify-center mt-12 px-4 pb-16">
+          <Link 
+            to="/shop" 
+            className="tech-button relative inline-flex items-center justify-center px-12 py-3 min-w-[220px] text-lg font-medium tracking-wider text-black bg-white hover:bg-gray-100 transition-all duration-700 border border-black"
+          >
+            <span className="text-fade relative z-10 w-full text-center uppercase tracking-widest">
+              Все товары
+            </span>
+            <img 
+              src="/ASSETS/items/союз лого пнг.png" 
+              alt="Союз лого" 
+              className="logo-reveal w-full h-full object-contain p-2"
+            />
+          </Link>
         </div>
       </div>
     </>

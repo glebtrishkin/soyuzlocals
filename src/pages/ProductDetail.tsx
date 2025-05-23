@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getProductInventory, type InventoryItem, getAvailableSizes } from '../lib/supabase';
 import SizeSelector from '../components/SizeSelector';
+import SizeGuide from '../components/SizeGuide';
 import { productsData } from '../lib/products';
 import { Product } from '../lib/types';
 
@@ -22,7 +23,18 @@ function ProductDetail() {
   const [error, setError] = useState<string | null>(null);
   const [addedToCart, setAddedToCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+
+  // Get product type for size guide
+  const getProductType = () => {
+    if (!product) return 'tshirt';
+    if (product.name.toLowerCase().includes('худи')) return 'hoodie';
+    if (product.name.toLowerCase().includes('кроп')) return 'crop-top';
+    if (product.name.toLowerCase().includes('лонг')) return 'longsleeve';
+    if (product.name.toLowerCase().includes('брюки') || product.name.toLowerCase().includes('штаны')) return 'pants';
+    return 'tshirt';
+  };
+
   // Set the product based on the ID from the URL
   useEffect(() => {
     if (id && productsData[id]) {
@@ -205,22 +217,22 @@ function ProductDetail() {
             </div>
             
             {(product.thumbnails?.length ? product.thumbnails : product.images)?.length > 1 && (
-  <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
-    {(product.thumbnails?.length ? product.thumbnails : product.images).map((thumb, index) => (
-      <button 
-        key={index}
-        onClick={() => handleThumbnailClick(index)}
-        className={`border ${currentImageIndex === index ? 'border-black' : 'border-gray-200'}`}
-      >
-        <img 
-          src={thumb} 
-          alt={`Thumbnail ${index + 1}`} 
-          className="w-full h-full object-cover"
-        />
-      </button>
-    ))}
-  </div>
-)}
+              <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
+                {(product.thumbnails?.length ? product.thumbnails : product.images).map((thumb, index) => (
+                  <button 
+                    key={index}
+                    onClick={() => handleThumbnailClick(index)}
+                    className={`border ${currentImageIndex === index ? 'border-black' : 'border-gray-200'}`}
+                  >
+                    <img 
+                      src={thumb} 
+                      alt={`Thumbnail ${index + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
@@ -296,8 +308,11 @@ function ProductDetail() {
                   </div>
                 )}
                 
-                {/* Size guide link */}
-                <button className="text-xs text-black underline mt-2 hover:opacity-70">
+                {/* Size guide button */}
+                <button 
+                  className="text-xs text-black underline mt-2 hover:opacity-70"
+                  onClick={() => setIsSizeGuideOpen(true)}
+                >
                   Таблица размеров
                 </button>
               </div>
@@ -423,23 +438,23 @@ function ProductDetail() {
           </div>
         )}
         
-        {/* Enhanced tech-inspired button with sophisticated animation */}
+        {/* Back to Home Button */}
         <div className="flex justify-center mt-12">
           <Link 
             to="/" 
-            className="tech-button relative inline-flex items-center justify-center px-12 py-3 min-w-[220px] text-lg font-medium tracking-wider text-black bg-white hover:bg-gray-100 transition-all duration-700 border border-black"
+            className="inline-flex items-center justify-center px-8 py-2 text-sm font-medium tracking-wider text-black bg-white border border-black uppercase"
           >
-            <span className="text-fade relative z-10 w-full text-center uppercase tracking-widest">
-              На главную
-            </span>
-            <img 
-              src="/ASSETS/союз лого пнг.png" 
-              alt="Союз лого" 
-              className="logo-reveal w-full h-full object-contain p-2"
-            />
+            На главную
           </Link>
         </div>
       </div>
+
+      {/* Size Guide Modal */}
+      <SizeGuide
+        isOpen={isSizeGuideOpen}
+        onClose={() => setIsSizeGuideOpen(false)}
+        productType={getProductType()}
+      />
     </div>
   );
 }

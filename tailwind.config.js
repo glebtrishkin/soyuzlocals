@@ -7,8 +7,9 @@ export default {
         sans: ['Lato', 'sans-serif'],
       },
       fontWeight: {
+        light: 300,
         normal: 400,
-        medium: 700,
+        medium: 500,
       },
       scale: {
         '102': '1.02',

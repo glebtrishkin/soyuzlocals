@@ -28,9 +28,8 @@ export const productsData: Record<string, Product> = {
     id: 'hoodie-1',
     name: 'Худи Союз',
     price: '5000 ₽',
-    image: '/ASSETS/DSC09470.jpg',
+    image: '/ASSETS/DSC09444.jpg',
     images: [
-      '/ASSETS/DSC09470.jpg',
       '/ASSETS/DSC09444.jpg',
       '/ASSETS/DSC09428.jpg',
       '/ASSETS/DSC09471.jpg',

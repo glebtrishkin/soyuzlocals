@@ -5,174 +5,90 @@
 /* Apply Lato font to all text elements with a lighter weight */
 body {
   font-family: 'Lato', sans-serif;
-  font-weight: 400; /* Changed from 900 to 400 for regular weight */
+  font-weight: 300;
   color: black;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, button, span, li {
   font-family: 'Lato', sans-serif;
-  font-weight: 400; /* Changed from 900 to 400 for regular weight */
+  font-weight: 300;
 }
 
-/* Headings can be slightly bolder but still elegant */
+/* Headings slightly bolder but still elegant */
 h1, h2, h3 {
-  font-weight: 700; /* Medium weight for headings */
+  font-weight: 400;
 }
 
 /* Navigation specific styling */
 nav a {
   letter-spacing: 1.5px;
-  font-weight: 700; /* Make navigation text bolder to match logo */
+  font-weight: 400;
 }
 
-/* Tech button animations - enhanced with more sophisticated transitions */
-.tech-button {
-  position: relative;
-  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
-  overflow: hidden;
+/* Category scroll styling */
+.category-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.tech-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+.category-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
-.tech-button:hover::after {
-  opacity: 1;
-}
-
-/* Logo reveal animation - slowed down */
-.tech-button .logo-reveal {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-  filter: blur(5px);
-}
-
-.tech-button:hover .logo-reveal {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-/* Text fade animation - slowed down */
-.tech-button .text-fade {
-  transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.tech-button:hover .text-fade {
-  transform: translateY(-100px);
-  opacity: 0;
-}
-
-/* Override text colors to be only black or white */
-.text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 {
-  color: black !important;
-}
-
-/* White text for elements on dark backgrounds */
-.bg-black .text-gray-500,
-.bg-black .text-gray-600,
-.bg-black .text-gray-700,
-.bg-black .text-gray-800,
-.bg-black .text-gray-900,
-.bg-black p,
-.bg-black h1,
-.bg-black h2,
-.bg-black h3,
-.bg-black h4,
-.bg-black h5,
-.bg-black h6,
-.bg-black a,
-.bg-black span,
-.bg-black li {
-  color: white !important;
-}
-
-/* Interactive hero effects */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* Depth effect for mobile devices that don't support hover */
+/* Mobile-specific styles */
 @media (max-width: 768px) {
-  .interactive-hero-mobile-effect {
-    animation: pulse 8s infinite ease-in-out;
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 24px;
   }
-}
 
-/* Elegant product card hover effects */
-.product-card {
-  position: relative;
-  overflow: hidden;
-}
+  .product-card {
+    background: white;
+    position: relative;
+    width: 100%;
+  }
 
-.product-card-image {
-  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 1.2s ease;
-  will-change: transform;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .product-card-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 133.33%;
+  }
 
-.product-card:hover .product-card-image {
-  transform: scale(1.01);
-  filter: brightness(0.97);
-}
+  .product-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.product-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.03) 100%);
-  opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
-}
+  .product-info {
+    padding: 8px 0;
+    text-align: left;
+  }
 
-.product-card:hover::after {
-  opacity: 1;
-}
+  .product-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+    font-weight: 300;
+  }
 
-.product-card-info {
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+  .product-price {
+    font-size: 14px;
+    font-weight: 300;
+  }
 
-.product-card:hover .product-card-info {
-  transform: translateY(-2px);
+  .favorite-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
 }

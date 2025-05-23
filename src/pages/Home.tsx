@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
 import InteractiveHero from '../components/InteractiveHero';
+import CategoryScroll from '../components/CategoryScroll';
 import { getAllInventory, groupInventoryByProduct, type InventoryItem } from '../lib/supabase';
 import { productsData } from '../lib/products';
 
@@ -11,56 +12,36 @@ function Home() {
     productsData['pants-1'],
     productsData['longsleeve-spring'],
     productsData['tshirt-skulls']
-  ].filter(Boolean); // Filter out any undefined products
+  ].filter(Boolean);
 
   const [inventory, setInventory] = useState<Record<string, InventoryItem[]>>({});
   const [loading, setLoading] = useState(true);
 
-  // Fetch inventory data from Supabase
-  useEffect(() => {
-    async function fetchInventory() {
-      try {
-        setLoading(true);
-        
-        // Get all inventory items
-        const allItems = await getAllInventory();
-        
-        // Group them by product ID
-        const groupedInventory = groupInventoryByProduct(allItems);
-        setInventory(groupedInventory);
-      } catch (error) {
-        console.error('Error fetching inventory:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    
-    fetchInventory();
-  }, []);
-
   return (
     <>
-      {/* Interactive Hero Section with depth effect */}
-      <InteractiveHero imageSrc="/ASSETS/items/hero.jpg">
+      <InteractiveHero imageSrc="/ASSETS/hero.jpg">
         <div className="w-full h-16 md:h-24">
           <Logo />
         </div>
       </InteractiveHero>
 
-      {/* Main Products Grid - No heading, no spacing, full width */}
       <div className="w-full">
         <div className="w-full p-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
             {mainProducts.map((product) => (
-              <Link to={`/product/${product.id}`} key={product.id} className="group cursor-pointer">
-                <div className="relative w-full overflow-hidden product-card">
+              <Link 
+                to={`/product/${product.id}`} 
+                key={product.id} 
+                className="product-card"
+              >
+                <div className="product-card-container">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-auto object-contain product-card-image"
+                    className="product-card-image"
                   />
                 </div>
-                <div className="p-4 product-card-info">
+                <div className="p-4">
                   <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
                   <p className="text-xs text-black mt-1">{product.price}</p>
                 </div>
@@ -68,21 +49,35 @@ function Home() {
             ))}
           </div>
         </div>
+
+        {/* Subscription Block */}
+        <div className="relative w-full h-[400px] overflow-hidden">
+          <img 
+            src="/ASSETS/DSC04537.jpg"
+            alt="Subscribe to our channel"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 flex items-end justify-center pb-8">
+            <Link 
+              to="https://t.me/soyuzstore"
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="bg-[#F4F1DE] text-black px-4 py-2 text-sm font-light hover:bg-opacity-90 transition-all text-center"
+            >
+              подпишитесь на наш канал, и следите за новинками
+            </Link>
+          </div>
+        </div>
+
+        {/* Category scroll section - only visible on mobile */}
+        <CategoryScroll />
         
-        {/* Enhanced tech-inspired button with sophisticated animation */}
         <div className="flex justify-center mt-12 px-4 pb-16">
           <Link 
             to="/shop" 
-            className="tech-button relative inline-flex items-center justify-center px-12 py-3 min-w-[220px] text-lg font-medium tracking-wider text-black bg-white hover:bg-gray-100 transition-all duration-700 border border-black"
+            className="inline-flex items-center justify-center px-8 py-2 text-sm font-medium tracking-wider text-black bg-white border border-black uppercase"
           >
-            <span className="text-fade relative z-10 w-full text-center uppercase tracking-widest">
-              Все товары
-            </span>
-            <img 
-              src="/ASSETS/items/союз лого пнг.png" 
-              alt="Союз лого" 
-              className="logo-reveal w-full h-full object-contain p-2"
-            />
+            Все товары
           </Link>
         </div>
       </div>

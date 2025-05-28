@@ -56,8 +56,8 @@ function Home() {
           </div>
         </div>
 
-        {/* Subscription Block */}
-        <div className="relative w-full h-[400px] overflow-hidden">
+        {/* Subscription Block - Added mt-12 for mobile spacing */}
+        <div className="relative w-full h-[400px] overflow-hidden mt-12 md:mt-0">
           <img 
             src="/ASSETS/DSC04537.jpg"
             alt="Subscribe to our channel"

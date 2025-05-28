@@ -25,7 +25,7 @@ function Home() {
         </div>
       </InteractiveHero>
 
-      <div className="w-full">
+      <div className="w-full mt-16 md:mt-24">
         <div className="w-full p-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
             {mainProducts.map((product) => (
@@ -34,16 +34,22 @@ function Home() {
                 key={product.id} 
                 className="product-card"
               >
-                <div className="product-card-container">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="product-card-image"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
-                  <p className="text-xs text-black mt-1">{product.price}</p>
+                <div className="md:product-card-container">
+                  <div className="p-4 md:hidden">
+                    <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
+                    <p className="text-xs text-black mt-1">{product.price}</p>
+                  </div>
+                  <div className="product-card-container">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="product-card-image"
+                    />
+                  </div>
+                  <div className="hidden md:block p-4">
+                    <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
+                    <p className="text-xs text-black mt-1">{product.price}</p>
+                  </div>
                 </div>
               </Link>
             ))}

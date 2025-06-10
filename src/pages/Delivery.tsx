@@ -12,7 +12,8 @@ function Delivery() {
         {/* Доставка */}
         <section className="mb-16">
           <h1 className="text-3xl font-bold uppercase text-black mb-8">
-  
+            Доставка
+          </h1>
           
           {/* Самовывоз */}
           <div className="mb-8 pb-6 border-b border-gray-200">

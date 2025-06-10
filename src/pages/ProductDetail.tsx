@@ -266,7 +266,7 @@ function ProductDetail() {
             {/* Size Selection with Availability Status */}
             {product.category !== 'accessories' && product.id !== 'bag-1' && (
               <div className="mb-6">
-                <h3 className="text-sm font-medium mb-2 text-black uppercase tracking-wider">Размер<h5
+                <h3 className="text-sm font-medium mb-2 text-black uppercase tracking-wider">Размер</h5>
                 {loading ? (
                   <p className="text-sm text-black">Загрузка размеров...</p>
                 ) : availableSizes && availableSizes.length > 0 ? (

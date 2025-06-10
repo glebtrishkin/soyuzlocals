@@ -6,12 +6,12 @@ function Delivery() {
   return (
     <>
       {/* Hero-блок одинаковый с главной */}
-      <InteractiveHero imageSrc="ASSETS/DSC01161-Улучшено-Ум. шума.jpg" />
+      <InteractiveHero imageSrc="/ASSETS/DSC01161-Улучшено-Ум. шума.jpg" />
 
       {/* Контент */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         {/* Доставка */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <section className="grid grid-cols-1 gap-12 items-center">
           <div>
             <h1 className="text-5xl font-bold uppercase text-black mb-4">
               Доставка
@@ -39,24 +39,10 @@ function Delivery() {
               </li>
             </ul>
           </div>
-          <div className="relative aspect-[4/3]">
-            <img
-              src="/ASSETS/delivery-image.jpg"
-              alt="Доставка"
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </div>
         </section>
 
         {/* Оплата */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-[4/3]">
-            <img
-              src="/ASSETS/payment-image.jpg"
-              alt="Оплата"
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </div>
+        <section className="grid grid-cols-1 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-semibold uppercase text-black mb-4">
               Оплата
@@ -69,7 +55,6 @@ function Delivery() {
                 </div>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-2xl"></span>
                 <div>
                   <p className="font-medium text-black">Онлайн-оплата</p>
                   <p>Сбербанк Online, Тинькофф, ЮMoney</p>

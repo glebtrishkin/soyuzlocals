@@ -5,8 +5,7 @@ import InteractiveHero from '../components/InteractiveHero';
 function Delivery() {
   return (
     <>
-      {/* Hero-блок одинаковый с главной */}
-      <InteractiveHero imageSrc="/ASSETS/DSC01161-Улучшено-Ум. шума.jpg" />
+     
 
       {/* Контент */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

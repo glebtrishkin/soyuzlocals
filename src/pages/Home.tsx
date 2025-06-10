@@ -77,7 +77,7 @@ function Home() {
           />
           <div className="absolute inset-0 flex items-end justify-center pb-8">
             <Link 
-              to="https://t.me/soyuzstore"
+              to="https://t.me/soyuzlocals"
               target="_blank"
               rel="noopener noreferrer" 
               className="bg-[#F4F1DE] text-black px-4 py-2 text-sm font-light hover:bg-opacity-90 transition-all text-center"

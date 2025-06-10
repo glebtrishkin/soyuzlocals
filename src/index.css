@@ -93,9 +93,9 @@ nav a {
   }
 }
 
-/* Desktop grid spacing - increased vertical spacing between rows */
+/* Desktop grid spacing - override Tailwind's gap-0 */
 @media (min-width: 769px) {
-  .product-grid.md\\:grid {
-    gap: 80px 0; /* 48px vertical gap, 0 horizontal gap between rows */
+  .product-grid.md\:grid.md\:grid-cols-3.md\:gap-0 {
+    gap: 48px 0 !important;
   }
 }

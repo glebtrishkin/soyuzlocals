@@ -157,6 +157,9 @@ function ProductDetail() {
   // Get category label
   const categoryLabel = categoryLabels[product.category as keyof typeof categoryLabels] || '';
 
+  // Check if any sizes are available
+  const hasAvailableSizes = availableSizes && availableSizes.length > 0 && availableSizes.some(size => size.inStock);
+
   return (
     <div className="pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -359,24 +362,78 @@ function ProductDetail() {
               </div>
             )}
             
-            {/* Add to Cart Button */}
-            <button
-              onClick={handleAddToCart}
-              className={`
-                tech-button w-full border border-black py-4 px-6 flex items-center justify-center 
-                uppercase font-medium relative overflow-hidden transition-all duration-700
-                ${addedToCart 
-                  ? 'bg-green-600 text-white hover:bg-green-700' 
-                  : 'bg-white text-black hover:bg-black hover:text-white'}
-              `}
-              disabled={loading || !selectedSize || !inventory.find(item => 
-                item.size.toLowerCase() === selectedSize.toLowerCase() && 
-                (item.quantity || item.stock || 0) > 0)}
-            >
-              <span className="relative z-10">
-                {loading ? 'ЗАГРУЗКА...' : addedToCart ? 'ДОБАВЛЕНО В КОРЗИНУ ✓' : 'ДОБАВИТЬ В КОРЗИНУ'}
-              </span>
-            </button>
+            {/* Add to Cart Button or No Sizes Available Message */}
+            {!loading && (
+              <>
+                {/* For clothing items - check if sizes are available */}
+                {product.category === 'clothing' && (
+                  <>
+                    {!hasAvailableSizes ? (
+                      <div className="w-full border border-gray-300 py-4 px-6 flex items-center justify-center bg-gray-100">
+                        <span className="text-black font-medium uppercase tracking-wider">
+                          Нет доступных размеров
+                        </span>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={handleAddToCart}
+                        className={`
+                          tech-button w-full border border-black py-4 px-6 flex items-center justify-center 
+                          uppercase font-medium relative overflow-hidden transition-all duration-700
+                          ${addedToCart 
+                            ? 'bg-green-600 text-white hover:bg-green-700' 
+                            : 'bg-white text-black hover:bg-black hover:text-white'}
+                        `}
+                        disabled={!selectedSize || !inventory.find(item => 
+                          item.size.toLowerCase() === selectedSize.toLowerCase() && 
+                          (item.quantity || item.stock || 0) > 0)}
+                      >
+                        <span className="relative z-10">
+                          {addedToCart ? 'ДОБАВЛЕНО В КОРЗИНУ ✓' : 'ДОБАВИТЬ В КОРЗИНУ'}
+                        </span>
+                      </button>
+                    )}
+                  </>
+                )}
+
+                {/* For accessories - check if item is in stock */}
+                {(product.category === 'accessories' || product.id === 'bag-1') && (
+                  <>
+                    {inventory.length === 0 || (inventory[0]?.quantity || inventory[0]?.stock || 0) <= 0 ? (
+                      <div className="w-full border border-gray-300 py-4 px-6 flex items-center justify-center bg-gray-100">
+                        <span className="text-black font-medium uppercase tracking-wider">
+                          Нет в наличии
+                        </span>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={handleAddToCart}
+                        className={`
+                          tech-button w-full border border-black py-4 px-6 flex items-center justify-center 
+                          uppercase font-medium relative overflow-hidden transition-all duration-700
+                          ${addedToCart 
+                            ? 'bg-green-600 text-white hover:bg-green-700' 
+                            : 'bg-white text-black hover:bg-black hover:text-white'}
+                        `}
+                      >
+                        <span className="relative z-10">
+                          {addedToCart ? 'ДОБАВЛЕНО В КОРЗИНУ ✓' : 'ДОБАВИТЬ В КОРЗИНУ'}
+                        </span>
+                      </button>
+                    )}
+                  </>
+                )}
+              </>
+            )}
+
+            {/* Loading state */}
+            {loading && (
+              <div className="w-full border border-gray-300 py-4 px-6 flex items-center justify-center bg-gray-100">
+                <span className="text-black font-medium uppercase tracking-wider">
+                  ЗАГРУЗКА...
+                </span>
+              </div>
+            )}
             
             {/* Size Guide */}
             {product.description && (

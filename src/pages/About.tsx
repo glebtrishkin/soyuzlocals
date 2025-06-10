@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import InteractiveHero from '../components/InteractiveHero';
 
 function About() {
   return (
     <>
-      <InteractiveHero imageSrc="/ASSETS/DSC04537.jpg" />
-
-      {/* Fullscreen perfectly centered text section */}
-      <div className="min-h-screen flex items-center justify-center bg-white px-4">
+      {/* Fullscreen perfectly centered text section with top spacing */}
+      <div className="min-h-screen flex items-center justify-center bg-white px-4 pt-24">
         <div className="text-center">
           <div className="space-y-8 md:space-y-12 lg:space-y-16">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none tracking-wider">

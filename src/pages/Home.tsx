@@ -34,8 +34,24 @@ function Home() {
                 key={product.id} 
                 className="product-card"
               >
-                <div className="md:product-card-container">
-                  <div className="p-4 md:hidden">
+                {/* Mobile version - info below image */}
+                <div className="md:hidden">
+                  <div className="product-card-container">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="product-card-image"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
+                    <p className="text-xs text-black mt-1">{product.price}</p>
+                  </div>
+                </div>
+
+                {/* Desktop version - info above image */}
+                <div className="hidden md:block">
+                  <div className="p-4">
                     <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
                     <p className="text-xs text-black mt-1">{product.price}</p>
                   </div>
@@ -45,10 +61,6 @@ function Home() {
                       alt={product.name}
                       className="product-card-image"
                     />
-                  </div>
-                  <div className="hidden md:block p-4">
-                    <h3 className="text-xs uppercase tracking-wider font-medium text-black">{product.name}</h3>
-                    <p className="text-xs text-black mt-1">{product.price}</p>
                   </div>
                 </div>
               </Link>

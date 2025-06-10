@@ -10,7 +10,7 @@ function About() {
           <p className="text-lg md:text-xl font-black text-black leading-relaxed">
             СОЮЗ — локальный калининградский бренд, мы существуем с 2018 года. Печатаем мерч шелкографией. Шьем одежду, сумки и аксессуары.
           </p>
-          <p className="text-lg md:text-xl font-semibold text-black leading-relaxed mt-6">
+          <p className="text-lg md:text-xl font-black text-black leading-relaxed mt-6">
             Наша миссия — развивать уникальный городской стиль, вдохновленный Калининградом, и создавать вещи, которые несут в себе частичку нашей культуры и истории.
           </p>
         </div>

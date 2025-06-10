@@ -69,7 +69,7 @@ function Delivery() {
                 </div>
               </li>
               <li className="flex items-start">
-                <span className="mr-4 text-2xl">🌐</span>
+                <span className="mr-4 text-2xl"></span>
                 <div>
                   <p className="font-medium text-black">Онлайн-оплата</p>
                   <p>Сбербанк Online, Тинькофф, ЮMoney</p>

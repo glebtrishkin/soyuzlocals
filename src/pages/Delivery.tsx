@@ -76,16 +76,9 @@ function Delivery() {
         <div className="flex justify-center mt-12 px-4 pb-16">
           <Link
             to="/shop"
-            className="tech-button relative inline-flex items-center justify-center px-8 py-4 uppercase font-medium relative overflow-hidden transition-all duration-700 border border-black"
+            className="inline-flex items-center justify-center px-8 py-2 text-sm font-medium tracking-wider text-black bg-white border border-black uppercase"
           >
-            <span className="text-fade relative z-10 w-full text-center tracking-widest">
-              Все товары
-            </span>
-            <img
-              src="/ASSETS/союз лого пнг.png"
-              alt="Союз лого"
-              className="logo-reveal w-full h-full object-contain p-2"
-            />
+            Все товары
           </Link>
         </div>
       </div>

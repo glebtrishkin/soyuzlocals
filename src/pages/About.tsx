@@ -7,6 +7,27 @@ function About() {
     <>
       <InteractiveHero imageSrc="/ASSETS/DSC04537.jpg" />
 
+      {/* Fullscreen bold text section */}
+      <div className="min-h-screen flex items-center justify-center bg-white px-4">
+        <div className="text-center">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-tight tracking-wider">
+            ГОРОД.
+          </h1>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-tight tracking-wider">
+            ЛЮДИ.
+          </h1>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-tight tracking-wider">
+            ОДЕЖДА.
+          </h1>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-tight tracking-wider">
+            ЛЮБОВЬ.
+          </h1>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-tight tracking-wider">
+            СОЮЗ.
+          </h1>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         <section className="flex flex-col items-center text-center">
           <img

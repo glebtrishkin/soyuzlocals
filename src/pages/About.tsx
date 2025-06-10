@@ -8,7 +8,7 @@ function About() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <p className="text-lg md:text-xl font-semibold text-black leading-relaxed">
-            Союз — локальный калининградский бренд, мы существуем с 2018 года. Печатаем мерч шелкографией. Шьем одежду, сумки и аксессуары.
+            *СОЮЗ* — локальный калининградский бренд, мы существуем с 2018 года. Печатаем мерч шелкографией. Шьем одежду, сумки и аксессуары.
           </p>
           <p className="text-lg md:text-xl font-semibold text-black leading-relaxed mt-6">
             Наша миссия — развивать уникальный городской стиль, вдохновленный Калининградом, и создавать вещи, которые несут в себе частичку нашей культуры и истории.

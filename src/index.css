@@ -95,8 +95,7 @@ nav a {
 
 /* Desktop grid spacing - increased vertical spacing between rows */
 @media (min-width: 769px) {
-  .product-grid {
-    row-gap: 80
-      px; /* Increased from default to create more space between rows */
+  .product-grid.md\\:grid {
+    gap: 48px 0; /* 48px vertical gap, 0 horizontal gap between rows */
   }
 }

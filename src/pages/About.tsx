@@ -4,29 +4,6 @@ import { Link } from 'react-router-dom';
 function About() {
   return (
     <>
-      {/* Fullscreen perfectly centered text section with top spacing */}
-      <div className="min-h-screen flex items-center justify-center bg-white px-4 pt-24">
-        <div className="text-center">
-          <div className="space-y-8 md:space-y-12 lg:space-y-16">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none tracking-wider">
-              ГОРОД.
-            </h1>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none tracking-wider">
-              ЛЮДИ.
-            </h1>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none tracking-wider">
-              ОДЕЖДА.
-            </h1>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none tracking-wider">
-              ЛЮБОВЬ.
-            </h1>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black leading-none tracking-wider">
-              СОЮЗ.
-            </h1>
-          </div>
-        </div>
-      </div>
-
       {/* Brand description section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">

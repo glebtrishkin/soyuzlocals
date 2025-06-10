@@ -114,32 +114,37 @@ function ProductDetail() {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize) {
+    if (!selectedSize && product.category === 'clothing') {
       alert('Пожалуйста, выберите размер');
       return;
     }
     
     // Check if the selected size is in stock
-    const selectedItem = inventory.find(item => item.size.toLowerCase() === selectedSize.toLowerCase());
+    const selectedItem = inventory.find(item => 
+      product.category === 'clothing' 
+        ? item.size.toLowerCase() === selectedSize.toLowerCase()
+        : true // For accessories, just check the first item
+    );
+    
     if (!selectedItem || (selectedItem.quantity || selectedItem.stock || 0) <= 0) {
-      alert('Извините, выбранный размер отсутствует в наличии');
+      alert('Извините, товар отсутствует в наличии');
       return;
     }
 
     // Check if requested quantity is available
     const availableQuantity = selectedItem.quantity || selectedItem.stock || 0;
     if (quantity > availableQuantity) {
-      alert(`Извините, в наличии только ${availableQuantity} шт. этого размера`);
+      alert(`Извините, в наличии только ${availableQuantity} шт.`);
       return;
     }
     
-    // For now, we'll just show a success message and redirect to cart
+    // Show success message and stay on the same page
     setAddedToCart(true);
     
-    // After a short delay, redirect to cart
+    // Reset the success message after 3 seconds
     setTimeout(() => {
-      window.location.href = '/cart';
-    }, 1000);
+      setAddedToCart(false);
+    }, 3000);
   };
 
   // Get related products from the same category (excluding current product)
@@ -252,7 +257,37 @@ function ProductDetail() {
               </div>
             )}
             
-            <h1 className="text-xl font-medium mb-4 text-black">{product.name}</h1>
+            {/* Mobile: Compact layout */}
+            <div className="md:hidden">
+              <div className="bg-gray-50 p-4 rounded-lg mb-6">
+                <h1 className="text-lg font-medium mb-2 text-black">{product.name}</h1>
+                <p className="text-lg font-medium mb-3 text-black">{product.price}</p>
+                
+                {/* Stock status for mobile */}
+                {loading ? (
+                  <p className="text-sm text-gray-500">Проверка наличия...</p>
+                ) : (
+                  <div className="flex items-center">
+                    {inventory.length > 0 && (inventory.some(item => (item.quantity || item.stock || 0) > 0)) ? (
+                      <span className="text-sm text-green-600 flex items-center">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        В наличии
+                      </span>
+                    ) : (
+                      <span className="text-sm text-red-600 flex items-center">
+                        <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                        Нет в наличии
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Desktop: Original layout */}
+            <div className="hidden md:block">
+              <h1 className="text-xl font-medium mb-4 text-black">{product.name}</h1>
+            </div>
             
             {/* Brand info for "friends" category */}
             {product.category === 'friends' && product.brand && (
@@ -266,7 +301,7 @@ function ProductDetail() {
             {/* Size Selection with Availability Status */}
             {product.category !== 'accessories' && product.id !== 'bag-1' && (
               <div className="mb-6">
-                <h3 className="text-sm font-medium mb-2 text-black uppercase tracking-wider">Размер</h5>
+                <h3 className="text-sm font-medium mb-2 text-black uppercase tracking-wider">Размер</h3>
                 {loading ? (
                   <p className="text-sm text-black">Загрузка размеров...</p>
                 ) : availableSizes && availableSizes.length > 0 ? (
@@ -343,7 +378,10 @@ function ProductDetail() {
               </div>
             )}
 
-            <p className="text-sm mb-6 text-black">{product.price}</p>
+            {/* Desktop price */}
+            <div className="hidden md:block">
+              <p className="text-sm mb-6 text-black">{product.price}</p>
+            </div>
             
             {/* Quantity Selector */}
             {selectedSize && getAvailableQuantity() > 0 && (

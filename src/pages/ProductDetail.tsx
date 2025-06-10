@@ -253,7 +253,6 @@ function ProductDetail() {
             )}
             
             <h1 className="text-xl font-medium mb-4 text-black">{product.name}</h1>
-            <p className="text-sm mb-6 text-black">{product.price}</p>
             
             {/* Brand info for "friends" category */}
             {product.category === 'friends' && product.brand && (
@@ -277,9 +276,7 @@ function ProductDetail() {
                     onSizeSelect={handleSizeSelect}
                     loading={loading}
                   />
-                ) : (
-                  <p className="text-sm text-black">Нет доступных размеров</p>
-                )}
+                ) : null}
                 
                 {/* Selected size availability */}
                 {selectedSize && (
@@ -345,6 +342,8 @@ function ProductDetail() {
                 )}
               </div>
             )}
+
+            <p className="text-sm mb-6 text-black">{product.price}</p>
             
             {/* Quantity Selector */}
             {selectedSize && getAvailableQuantity() > 0 && (
@@ -368,13 +367,7 @@ function ProductDetail() {
                 {/* For clothing items - check if sizes are available */}
                 {product.category === 'clothing' && (
                   <>
-                    {!hasAvailableSizes ? (
-                      <div className="w-full border border-gray-300 py-4 px-6 flex items-center justify-center bg-gray-100">
-                        <span className="text-black font-medium uppercase tracking-wider">
-                          Нет доступных размеров
-                        </span>
-                      </div>
-                    ) : (
+                    {hasAvailableSizes ? (
                       <button
                         onClick={handleAddToCart}
                         className={`
@@ -392,20 +385,14 @@ function ProductDetail() {
                           {addedToCart ? 'ДОБАВЛЕНО В КОРЗИНУ ✓' : 'ДОБАВИТЬ В КОРЗИНУ'}
                         </span>
                       </button>
-                    )}
+                    ) : null}
                   </>
                 )}
 
                 {/* For accessories - check if item is in stock */}
                 {(product.category === 'accessories' || product.id === 'bag-1') && (
                   <>
-                    {inventory.length === 0 || (inventory[0]?.quantity || inventory[0]?.stock || 0) <= 0 ? (
-                      <div className="w-full border border-gray-300 py-4 px-6 flex items-center justify-center bg-gray-100">
-                        <span className="text-black font-medium uppercase tracking-wider">
-                          Нет в наличии
-                        </span>
-                      </div>
-                    ) : (
+                    {inventory.length > 0 && (inventory[0]?.quantity || inventory[0]?.stock || 0) > 0 ? (
                       <button
                         onClick={handleAddToCart}
                         className={`
@@ -420,7 +407,7 @@ function ProductDetail() {
                           {addedToCart ? 'ДОБАВЛЕНО В КОРЗИНУ ✓' : 'ДОБАВИТЬ В КОРЗИНУ'}
                         </span>
                       </button>
-                    )}
+                    ) : null}
                   </>
                 )}
               </>
